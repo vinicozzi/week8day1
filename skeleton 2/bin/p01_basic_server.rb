@@ -1,12 +1,12 @@
 require 'rack'
 
 app =  Proc.new do |env|
-    ['200',{"Content-Type"=>'text/html'}, ['Hello, Rok']]
-    # req = Rack::Request.new(env)
-    # res = Rack::Request.new 
-    # res['Content-Type'] = 'text/html'
-    # res.write['Hello Arvid!']
-    # res.finish 
+    # ['200',{"Content-Type"=>'text/html'}, ['Hello, Rok']]
+    req = Rack::Request.new(env)
+    res = Rack::Response.new 
+    res['Content-Type'] = 'text/html'
+    res.write('Hello Big ROK')
+    res.finish 
 end 
 
 # app = Proc.new do |env|

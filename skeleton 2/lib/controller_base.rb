@@ -8,6 +8,8 @@ class ControllerBase
 
   # Setup the controller
   def initialize(req, res)
+    @req = req
+    @res = res
   end
 
   # Helper method to alias @already_built_response
@@ -21,7 +23,11 @@ class ControllerBase
   # Populate the response with content.
   # Set the response's content type to the given type.
   # Raise an error if the developer tries to double render.
-  def render_content(content, content_type)
+  def render_content(content, content_type = 'text/html')
+      @res.write(content)
+      @res['Content-Type'] = content_type
+      nil
+    end
   end
 
   # use ERB and binding to evaluate templates
